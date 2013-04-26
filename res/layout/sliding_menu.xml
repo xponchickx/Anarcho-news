@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/categories"
+        android:textSize="27sp" />
+
+    <ListView
+        android:id="@+id/menu_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout1"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1" >
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="140dip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" >
+
+        <ru.xponchickx.anarcho_news.DashboardLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:id="@+id/news_button"
+                style="@style/DashboardButton"
+                android:drawableTop="@drawable/news"
+                android:text="@string/last_news" />
+
+            <Button
+                android:id="@+id/articles_button"
+                style="@style/DashboardButton"
+                android:drawableTop="@drawable/articles"
+                android:text="@string/theory_string" />
+
+            <Button
+                android:id="@+id/books_button"
+                style="@style/DashboardButton"
+                android:drawableTop="@drawable/books"
+                android:text="@string/literature_string" />
+
+            <Button
+                android:id="@+id/settings_button"
+                style="@style/DashboardButton"
+                android:drawableTop="@drawable/settings"
+                android:text="@string/setup_string" />
+        </ru.xponchickx.anarcho_news.DashboardLayout>
+    </LinearLayout>
+
+</RelativeLayout>

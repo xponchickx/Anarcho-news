@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ru.xponchickx.anarcho_news.DashboardLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <Button
+            android:id="@+id/home_btn_new_message"
+            style="@style/DashboardButton"
+            android:drawableTop="@drawable/news" />
+
+        <Button
+            android:id="@+id/home_btn_messages"
+            style="@style/DashboardButton"
+            android:drawableTop="@drawable/articles" />
+
+        <Button
+            android:id="@+id/home_btn_preferences"
+            style="@style/DashboardButton"
+            android:drawableTop="@drawable/books" />
+
+        <Button
+            android:id="@+id/home_btn_full_version"
+            style="@style/DashboardButton"
+            android:drawableTop="@drawable/movies" />
+    </ru.xponchickx.anarcho_news.DashboardLayout>
+
+</LinearLayout>

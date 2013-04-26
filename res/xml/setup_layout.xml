@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/media" >
+        <CheckBoxPreference
+            android:key="load_pictures"
+            android:summaryOff="@string/do_not_load_pictures"
+            android:summaryOn="@string/load_pictures"
+            android:title="@string/load_pictures" >
+        </CheckBoxPreference>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/download" >
+        <EditTextPreference
+            android:defaultValue="/sdcard/Download/"
+            android:key="load_to"
+            android:title="@string/load_to" />
+
+        <CheckBoxPreference
+            android:key="load_automatically"
+            android:summaryOff="@string/do_not_load_automatically"
+            android:summaryOn="@string/load_automatically"
+            android:title="@string/load_automatically" >
+        </CheckBoxPreference>
+    </PreferenceCategory>
+	
+    <PreferenceCategory android:title="@string/information">
+    <Preference
+        android:key="about"
+        android:title="@string/about" >
+        <intent
+            android:targetClass="ru.xponchickx.anarcho_news.AboutActivity"
+            android:targetPackage="ru.xponchickx.anarcho_news" />
+    </Preference>
+    </PreferenceCategory>
+
+</PreferenceScreen>

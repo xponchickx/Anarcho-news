@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Anarcho-news</string>
+    <string name="news_string">Новости</string>
+    <string name="theory_string">Теория</string>
+    <string name="literature_string">Литература</string>
+    <string name="screenings_string">Киносеансы</string>
+    <string name="doings_string">События</string>
+    <string name="setup_string">Настройки</string>
+    <string name="choose_category_string">Выбирите раздел</string>
+    <string name="exception_text">Возможно возникли неполадки с интернетом, попробуйте повторить позднее.</string>
+    <string name="date">Дата добавления</string>
+    <string name="views">Кол-во просмотров</string>
+    <string name="news_icon">Картинка новости</string>
+    <string name="loading_string">Загрузка</string>
+    <string name="repeat">Повторить</string>
+    <string name="cancel">Отмена</string>
+    <string name="load_more">Загрузить ещё</string>
+    <string name="sdcard_download">/sdcard/Download/</string>
+    <string name="load_pictures">Отображать картинки</string>
+    <string name="media">Медиа</string>
+    <string name="load_automatically">Загружать новости автоматически</string>
+    <string name="download">Загрузки</string>
+    <string name="information">Информация</string>
+    <string name="do_not_load_automatically">Загружать по нажатию \"загрузить ещё\"</string>
+    <string name="do_not_load_pictures">Не отображать картинки</string>
+    <string name="load_to">Загружать в</string>
+    <string name="about">О приложении</string>
+    <string name="change_date">Сменить дату</string>
+    <string name="view_date">Посмотреть дату</string>
+    <string name="last_news">Последние новости</string>
+    <string name="mode">Mode</string>
+    <string name="categories">Категории</string>
+    <string name="about_info">Какой-то текст, который я ещё не придумал. Если нашли ошибку, пишите на xponchickx@riseup.net. Если хотите сделать пожертвование, тогда лучше пожертвуйте в АЧК, а ещё лучше купите бензин и машинное масло. Всем любви.</string>
+    
+
+    <string-array name="months">
+        <item>Январь</item>
+        <item>Февраль</item>
+        <item>Март</item>
+        <item>Апрель</item>
+        <item>Май</item>
+        <item>Июнь</item>
+        <item>Июль</item>
+        <item>Август</item>
+        <item>Сентябрь</item>
+        <item>Октябрь</item>
+        <item>Ноябрь</item>
+        <item>Декабрь</item>
+    </string-array>
+
+</resources>

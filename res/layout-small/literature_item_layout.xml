@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="70dip"
+    android:background="@drawable/news_item_background"
+    android:orientation="horizontal"
+    tools:ignore="InefficientWeight" >
+
+    <ImageView
+        android:id="@+id/literature_image"
+        android:layout_width="70dip"
+        android:layout_height="70dip"
+        android:contentDescription="@string/news_icon"
+        android:scaleType="centerCrop"
+        android:src="@drawable/unloaded" />
+
+    <TextView
+        android:id="@+id/literature_text"
+        android:layout_width="match_parent"
+        android:layout_height="55dip"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginLeft="10dip"
+        android:layout_weight="1"
+        android:textSize="12sp" />
+
+</LinearLayout>

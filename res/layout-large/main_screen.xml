@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dark_wood_nook_wallpaper"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/news_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/news"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/theory_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/articles"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/screenings_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignLeft="@+id/theory_button"
+        android:layout_alignTop="@+id/literature_button"
+        android:src="@drawable/movies"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/literature_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignLeft="@+id/news_button"
+        android:layout_below="@+id/news_button"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/books"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/doings_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignLeft="@+id/literature_button"
+        android:layout_below="@+id/literature_button"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/events"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/news_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/news_button"
+        android:layout_alignRight="@+id/news_button"
+        android:layout_below="@+id/news_button"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="@string/news_string"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/theory_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/news_text"
+        android:layout_alignLeft="@+id/theory_button"
+        android:layout_alignRight="@+id/theory_button"
+        android:gravity="center"
+        android:text="@string/theory_string"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/literature_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/literature_button"
+        android:layout_alignRight="@+id/literature_button"
+        android:layout_below="@+id/literature_button"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="@string/literature_string"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/screenings_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/literature_text"
+        android:layout_alignLeft="@+id/screenings_button"
+        android:layout_alignRight="@+id/screenings_button"
+        android:gravity="center"
+        android:text="@string/screenings_string"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/setup_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignLeft="@+id/screenings_button"
+        android:layout_alignTop="@+id/doings_button"
+        android:src="@drawable/settings"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/doings_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/doings_button"
+        android:layout_alignRight="@+id/doings_button"
+        android:layout_below="@+id/doings_button"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="@string/doings_string"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/setup_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/doings_text"
+        android:layout_alignLeft="@+id/setup_button"
+        android:layout_alignRight="@+id/setup_button"
+        android:gravity="center"
+        android:text="@string/setup_string"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+    <com.devspark.sidenavigation.SideNavigationView
+        android:id="@+id/side_navigation_view2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>
