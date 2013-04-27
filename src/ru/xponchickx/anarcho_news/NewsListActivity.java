@@ -58,8 +58,8 @@ public class NewsListActivity extends SherlockActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		super.onCreate(savedInstanceState); 
+		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.news_list_layout);
 		if (getIntent().hasExtra("title")) {
 			setTitle(getIntent().getStringExtra("title"));

@@ -29,7 +29,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-public class LiteratureActivity extends Activity {
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Window;
+import com.slidingmenu.lib.SlidingMenu;
+
+public class LiteratureActivity extends SherlockActivity {
 	private ListView literatureList;
 	ArrayAdapter<String> adapter;
 	Activity context;
@@ -42,10 +46,12 @@ public class LiteratureActivity extends Activity {
 	SaxFeedParser saxFeedParser;
 	boolean loadAutomatically;
 	boolean lastPage;
+	SlidingMenu slidingMenu;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.literature_layout);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		context = this;
@@ -53,6 +59,9 @@ public class LiteratureActivity extends Activity {
 		literatureList = (ListView) findViewById(R.id.literature_list);
 		literatureList.setAdapter(adapter);
 		
+		setTitle("Литература");
+		slidingMenu = new SlidingMenu(this);
+		ANApplication.configureSlidingMenu(slidingMenu, LiteratureActivity.this);
 		
 		if (loadAutomatically) {
 			literatureList.setOnScrollListener(new OnScrollListener() {
@@ -119,8 +128,9 @@ public class LiteratureActivity extends Activity {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			loadingDialog = new LoadingDialog(context, LoadAsyncTask.this);
-			loadingDialog.show();
+			getSherlock().setProgressBarIndeterminateVisibility(true);
+			//loadingDialog = new LoadingDialog(context, LoadAsyncTask.this);
+			//loadingDialog.show();
 		}
 
 		@Override
@@ -187,9 +197,11 @@ public class LiteratureActivity extends Activity {
 				if (lastPage) {
 					literatureList.removeFooterView(loadMoreButton);
 				}
-				loadingDialog.dismiss();
+				//loadingDialog.dismiss();
+				getSherlock().setProgressBarIndeterminateVisibility(false);
 			} else {
-				loadingDialog.dismiss();
+				//loadingDialog.dismiss();
+				getSherlock().setProgressBarIndeterminateVisibility(false);
 				ErrorDialog err = new ErrorDialog(context);
 				err.show();
 			}
