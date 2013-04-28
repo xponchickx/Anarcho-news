@@ -61,10 +61,16 @@ public class LazyAdapter extends BaseAdapter {
 		TextView timeText = (TextView) vi.findViewById(R.id.pub_time_text);
 		TextView viewsText = (TextView) vi.findViewById(R.id.views_text);
 		ImageView image = (ImageView) vi.findViewById(R.id.news_image);
+		ImageView imageBorder = (ImageView) vi.findViewById(R.id.image_border);
 		titelText.setText(titels.get(position));
 		dateText.setText(dates.get(position));
 		viewsText.setText(views.get(position));
 		timeText.setText(times.get(position));
+		if (position % 2 == 1) {
+			imageBorder.setBackgroundResource(android.R.color.black);
+		} else {
+			imageBorder.setBackgroundResource(android.R.color.white);
+		}
 		imageLoader.DisplayImage(images.get(position), image);
 		return vi;
 	}
