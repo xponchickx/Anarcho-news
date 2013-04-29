@@ -19,7 +19,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -36,7 +35,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class BookActivity extends Activity {
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Window;
+
+public class BookActivity extends SherlockActivity {
 	Intent bookIntent;
 	BookAsyncTask BookTask;
 	String url;
@@ -50,8 +52,8 @@ public class BookActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.book_layout);
-		//setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		context = this;
 		bookIntent = getIntent();
 		url = bookIntent.getStringExtra("url");
@@ -67,12 +69,13 @@ public class BookActivity extends Activity {
 	}
 	
 	public class BookAsyncTask extends AsyncTask<String, Void, Boolean> {
-		Dialog loadingDialog;
+		//Dialog loadingDialog;
 
 		@Override
 		protected void onPreExecute() {
-			loadingDialog = new LoadingDialog(context, BookAsyncTask.this);
-			loadingDialog.show();
+			//loadingDialog = new LoadingDialog(context, BookAsyncTask.this);
+			//loadingDialog.show();
+			getSherlock().setProgressBarIndeterminateVisibility(true);
 			super.onPreExecute();
 		}
 
@@ -126,9 +129,11 @@ public class BookActivity extends Activity {
 						new DownloadFileFromURL().execute(message.getFile(), filePath, fileName);
 					}
 				});
-				loadingDialog.dismiss();
+				getSherlock().setProgressBarIndeterminateVisibility(false);
+				//loadingDialog.dismiss();
 			} else {
-				loadingDialog.dismiss();
+				//loadingDialog.dismiss();
+				getSherlock().setProgressBarIndeterminateVisibility(false);
 				ErrorDialog err = new ErrorDialog(context);
 				err.show();
 			}

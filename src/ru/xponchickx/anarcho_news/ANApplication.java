@@ -152,9 +152,9 @@ public class ANApplication extends Application {
 		Button theoryButton = (Button) menu.findViewById(R.id.articles_button);
 		Button setupButton = (Button) menu.findViewById(R.id.settings_button);
 		
-		newsButton.setOnClickListener(new MainActivityListener(activity, menu));
-		literatureButton.setOnClickListener(new MainActivityListener(activity, menu));
-		theoryButton.setOnClickListener(new MainActivityListener(activity, menu));
-		setupButton.setOnClickListener(new MainActivityListener(activity, menu));
+		newsButton.setOnClickListener(new MenuListener(activity, menu));
+		literatureButton.setOnClickListener(new MenuListener(activity, menu));
+		theoryButton.setOnClickListener(new MenuListener(activity, menu));
+		setupButton.setOnClickListener(new MenuListener(activity, menu));
 	}
 }
