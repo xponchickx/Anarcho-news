@@ -10,7 +10,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -22,7 +21,10 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class NewsActivity extends Activity {
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Window;
+
+public class NewsActivity extends SherlockActivity {
 	Intent NewsIntent;
 	NewsAsyncTask NewsTask;
 	String url;
@@ -35,6 +37,7 @@ public class NewsActivity extends Activity {
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.news_layout);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		context = this;
@@ -75,11 +78,12 @@ public class NewsActivity extends Activity {
 	}
 
 	public class NewsAsyncTask extends AsyncTask<String, Void, Boolean> {
-		Dialog loadingDialog;
+		//Dialog loadingDialog;
 		@Override
 		protected void onPreExecute() {
-			loadingDialog = new LoadingDialog(context, NewsAsyncTask.this);
-			loadingDialog.show();
+			getSherlock().setProgressBarIndeterminateVisibility(true);
+			//loadingDialog = new LoadingDialog(context, NewsAsyncTask.this);
+			//loadingDialog.show();
 			super.onPreExecute();
 		}
 		@Override
@@ -115,9 +119,11 @@ public class NewsActivity extends Activity {
 			if (result) {	
 				newsDescription.loadDataWithBaseURL("", message.getFullText(), "text/html", "utf-8", "");
 				super.onPostExecute(result);
-				loadingDialog.dismiss();
+				//loadingDialog.dismiss();
+				getSherlock().setProgressBarIndeterminateVisibility(false);
 			} else {
-				loadingDialog.dismiss();
+				//loadingDialog.dismiss();
+				getSherlock().setProgressBarIndeterminateVisibility(false);
 				ErrorDialog err = new ErrorDialog(context);
 				err.show();
 			}

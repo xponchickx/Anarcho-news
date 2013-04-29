@@ -11,7 +11,6 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -20,6 +19,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,6 +30,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
@@ -55,6 +56,7 @@ public class NewsListActivity extends SherlockActivity {
 	boolean loadAutomatically;
 	SlidingMenu slidingMenu;
 	boolean lastPage;
+	boolean doubleBackToExitPressedOnce = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -164,7 +166,7 @@ public class NewsListActivity extends SherlockActivity {
 	}
 
 	public class LoadAsyncTask extends AsyncTask<String, Void, Boolean> {
-		Dialog loadingDialog;
+		//Dialog loadingDialog;
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
@@ -316,14 +318,25 @@ public class NewsListActivity extends SherlockActivity {
 		}
 	}
 	
-	@SuppressLint("NewApi")
 	@Override
 	public void onBackPressed() {
 		if (slidingMenu.isMenuShowing()) {
 			slidingMenu.toggle();
-	    } else {
-	        this.finish();
-	    }
+		} else {
+			if (doubleBackToExitPressedOnce) {
+				super.onBackPressed();
+				return;
+			}
+			this.doubleBackToExitPressedOnce = true;
+			Toast.makeText(this, "Нажмите \"Назад\" ещё раз , чтобы выйти", Toast.LENGTH_SHORT).show();
+			new Handler().postDelayed(new Runnable() {
+
+				@Override
+				public void run() {
+					doubleBackToExitPressedOnce = false;
+				}
+			}, 2500);
+		}
 	}
 
 	@Override
