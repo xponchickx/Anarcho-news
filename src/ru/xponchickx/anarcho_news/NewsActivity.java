@@ -66,24 +66,11 @@ public class NewsActivity extends SherlockActivity {
 		newsDescription.saveState(outState);
 		super.onSaveInstanceState(outState);
 	}
-	
-	@Override
-	protected void onPause() {
-		super.onPause();
-	}
-	
-	@Override
-	protected void onResume() {
-		super.onResume();
-	}
 
 	public class NewsAsyncTask extends AsyncTask<String, Void, Boolean> {
-		//Dialog loadingDialog;
 		@Override
 		protected void onPreExecute() {
 			getSherlock().setProgressBarIndeterminateVisibility(true);
-			//loadingDialog = new LoadingDialog(context, NewsAsyncTask.this);
-			//loadingDialog.show();
 			super.onPreExecute();
 		}
 		@Override
@@ -114,26 +101,37 @@ public class NewsActivity extends SherlockActivity {
 			}
 			return true;
 		}
+
 		@Override
 		protected void onPostExecute(Boolean result) {
-			if (result) {	
+			if (result) {
+				Log.d("ANA", message.getFullText());
+				Log.d("ANA", message.getFullText());
+				message.setFullText(message.getFullText().replaceAll("src=\"/upload", "src=\"http://anarcho-news.com/upload").replaceAll("href=\"/upload", "href=\"http://anarcho-news.com/upload"));
 				newsDescription.loadDataWithBaseURL("", message.getFullText(), "text/html", "utf-8", "");
 				super.onPostExecute(result);
-				//loadingDialog.dismiss();
 				getSherlock().setProgressBarIndeterminateVisibility(false);
 			} else {
-				//loadingDialog.dismiss();
 				getSherlock().setProgressBarIndeterminateVisibility(false);
 				ErrorDialog err = new ErrorDialog(context);
 				err.show();
 			}
 		}
 	}
-	
-	@Override
-	protected void onRestoreInstanceState(Bundle savedInstanceState) {
-		Log.d("ANA", "NewsActivity: onRestoreInstanceState");
-		newsDescription.restoreState(savedInstanceState);
-		super.onRestoreInstanceState(savedInstanceState);
-	}
+
+	/*@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (event.getAction() == KeyEvent.ACTION_DOWN) {
+			switch (keyCode) {
+			case KeyEvent.KEYCODE_BACK:
+				if (newsDescription.canGoBack() == true) {
+					newsDescription.goBack();
+				} else {
+					onBackPressed();
+				}
+				return true;
+			}
+		}
+		return super.onKeyDown(keyCode, event);
+	}*/
 }

@@ -44,7 +44,7 @@ public class ANApplication extends Application {
 	static SharedPreferences appPrefs;
 	static Context context;
 
-	static public void newsDescriptionInit(Activity context, final WebView newsDescription) {
+	static public void newsDescriptionInit(final Activity context, final WebView newsDescription) {
 		appPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 		loadPictures = appPrefs.getBoolean("load_pictures", true);
 		newsDescription.getSettings().setPluginState(WebSettings.PluginState.ON);
@@ -53,6 +53,19 @@ public class ANApplication extends Application {
 		newsDescription.getSettings().setAllowFileAccess(true);
 		newsDescription.getSettings().setLoadsImagesAutomatically(loadPictures);
 		newsDescription.getSettings().setAllowFileAccess(true);
+		
+		/*newsDescription.setWebViewClient(new WebViewClient() {
+			@Override
+			public boolean shouldOverrideUrlLoading(WebView view, String url) {
+				if (url.startsWith("/upload")) {
+					url = "http://anarcho-news.com/" + url;
+				}
+				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+				context.startActivity(browserIntent);
+				return true;
+			}
+		});*/
+		
 		newsDescription.setWebChromeClient(new WebChromeClient() {
 			private Object mCustomView;
 			private CustomViewCallback mCustomViewCallback;
@@ -69,7 +82,6 @@ public class ANApplication extends Application {
 					mMainContentContainer.addView(view);
 				}
 			}
-
 			@Override
 			public void onHideCustomView() {
 				if (mCustomView != null) {
@@ -80,13 +92,6 @@ public class ANApplication extends Application {
 				}
 			}
 		});
-		
-		/*newsDescription.setWebViewClient(new WebViewClient() {
-			@Override
-			public void onPageFinished(WebView view, String url) {
-				newsDescription.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-			}
-		});*/
 	}
 
 	@Override
@@ -124,8 +129,7 @@ public class ANApplication extends Application {
 		menu.attachToActivity(activity, SlidingMenu.SLIDING_CONTENT);
 		menu.setMenu(R.layout.sliding_menu);
 		menu.setBehindOffset(105);
-		
-		
+
 		ListView menuList = (ListView) menu.findViewById(R.id.menu_list_view);
 		String[] categoriesArray = new String[categories.size()];
 		int i = 0;
@@ -134,9 +138,9 @@ public class ANApplication extends Application {
 			Log.d("ANA", categoriesArray[i]);
 			i++;
 		}
+
 		menuList.setAdapter(new ArrayAdapter<String>(context, R.layout.sliding_menu_item, R.id.sliding_menu_item_title, categoriesArray));
 		menuList.setOnItemClickListener(new OnItemClickListener() {
-
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
 				Intent i = new Intent(context, NewsListActivity.class);
@@ -146,12 +150,12 @@ public class ANApplication extends Application {
 				activity.finish();
 			}
 		});
-		
+
 		Button newsButton = (Button) menu.findViewById(R.id.news_button);
 		Button literatureButton = (Button) menu.findViewById(R.id.books_button);
 		Button theoryButton = (Button) menu.findViewById(R.id.articles_button);
 		Button setupButton = (Button) menu.findViewById(R.id.settings_button);
-		
+
 		newsButton.setOnClickListener(new MenuListener(activity, menu));
 		literatureButton.setOnClickListener(new MenuListener(activity, menu));
 		theoryButton.setOnClickListener(new MenuListener(activity, menu));

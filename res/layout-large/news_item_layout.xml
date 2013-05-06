@@ -10,6 +10,7 @@
     <RelativeLayout
         android:layout_width="100dp"
         android:layout_height="100dp" >
+
         <ImageView
             android:id="@+id/image_border"
             android:layout_width="100dp"
@@ -21,14 +22,13 @@
 
         <ImageView
             android:id="@+id/news_image"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:contentDescription="@string/news_icon"
             android:scaleType="centerCrop"
             android:src="@drawable/unloaded" />
-
     </RelativeLayout>
 
     <LinearLayout
@@ -96,5 +96,4 @@
                 android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>
